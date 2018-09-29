@@ -1,4 +1,4 @@
-package com.sa.group18.controller;
+/*package com.sa.group18.controller;
 import java.util.Collection;
 import com.sa.group18.entity.Position;
 import com.sa.group18.repository.PositionRepository;
@@ -15,3 +15,4 @@ public class PositionController{
         return repo.findAll();
     }
 }
+*/

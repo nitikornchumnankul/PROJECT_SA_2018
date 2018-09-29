@@ -1,4 +1,4 @@
-package com.sa.group18.controller;
+/*package com.sa.group18.controller;
 import java.util.Collection;
 import com.sa.group18.entity.Profile;
 import com.sa.group18.repository.ProfileRepository;
@@ -15,3 +15,4 @@ public class ProfileController{
         return repo.findAll();
     }
 }
+*/

@@ -7,52 +7,49 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-
+import javax.xml.crypto.Data;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import lombok.*;
-
-@Data
-@Table(name="Profile")
 @Entity
+@lombok.Data
+@Table(name="Profile")
 public class Profile{
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="Profile_Id")
-    private @NonNull Long Profile_Id;
+    private @NonNull Long   Profile_Id;
     private @NonNull String First_Name;
     private @NonNull String Last_Name;
     private @NonNull String Sex;
 
   
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Data Brithday;
+    private Data    Brithday;
     @Column(length=13)
-    private @NonNull String Identification_number;
+    private String Identification_number;
+    @Column(length=6)
+    private long   Sarary;
+    @Column(length=3)
+    private long   Height;
+    @Column(length=3)
+    private long   Weight;
+    private @NonNull String Congennitial_disease;
+    private @NonNull String Email;
+
+
    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "Religion_Id")
     @JsonBackReference
     private Religion Religion;
 
-
-    @Column(length=6)
-    private @NonNull long Sarary;
-    @Column(length=3)
-    private @NonNull long Height;
-    @Column(length=3)
-    private @NonNull long Weight;
-    private @NonNull String Congennitial_disease;
-    private @NonNull String Email;
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "Position_Id")
     @JsonBackReference
-    private Position position;
+    private Position Position;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "Titlename_Id")
@@ -76,6 +73,43 @@ public class Profile{
     @JsonBackReference
     private Ethnicity Ethnicity;
 
+    protected  Profile(){ }
+    public  Profile( String name,                  String lastname,
+                    String sex,                   Data   Brithday,
+                     String Identification_number, long   Sarary,
+                     long   Height,                long   Weight,
+                     String Congennitial_disease,  String Email,
+                     long   Religion_Id,           long   Position_Id,
+                     long   Titlename_Id,          long   Status_Id,
+                     long   Nationality_Id,        long   Ethnicity_Id){
+
+        Religion    religion    = new Religion(Religion_Id);
+        Position    position    = new Position(Position_Id);
+        Titlename   titlename   = new Titlename(Titlename_Id);
+        Status      status      = new Status(Status_Id);
+        Nationality nationality = new Nationality(Nationality_Id);
+        Ethnicity   ethnicity   = new Ethnicity(Ethnicity_Id);
+
+        this.First_Name           = name;
+        this.Last_Name            = lastname;
+        this.Brithday             = Brithday;
+        this.Identification_number= Identification_number;
+        this.Sarary               = Sarary;
+        this.Height               = Height;
+        this.Weight               = Weight;
+        this.Congennitial_disease = Congennitial_disease;
+        this.Email                = Email;
+
+        this.Religion             = religion;
+        this.Position             = position;
+        this.Titlename            = titlename;
+        this.Status               = status;
+        this.Nationality          = nationality;
+        this.Ethnicity            = ethnicity;
+        
+        
+
+    }
 
    
 }

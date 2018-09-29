@@ -9,30 +9,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import lombok.*;
-
+@Entity
 @Data
 @Table(name="Status")
-@Entity
+
 public class Status{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Status_Id")
     private @NonNull Long Status_Id;
-
-    @Column
     private @NonNull String Status;
 
     
     @OneToMany(mappedBy="Status",fetch= FetchType.LAZY)
+    @JsonManagedReference
     private List<Profile> profiles =new ArrayList<>();
     
     protected Status(){}
     public  Status(String Status) {
         this.Status=Status;
+    }
+    public Status(long Status_Id){
+        this.Status_Id=Status_Id;
     }
 }

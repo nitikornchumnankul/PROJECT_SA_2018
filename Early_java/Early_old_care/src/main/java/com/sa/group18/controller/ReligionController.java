@@ -1,5 +1,5 @@
 
-package com.sa.group18.controller;
+/*package com.sa.group18.controller;
 import java.util.Collection;
 import com.sa.group18.entity.Religion;
 import com.sa.group18.repository.ReligionRepository;
@@ -16,3 +16,4 @@ public class ReligionController{
         return repo.findAll();
     }
 }
+*/

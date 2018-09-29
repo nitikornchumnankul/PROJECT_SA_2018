@@ -1,4 +1,4 @@
-package com.sa.group18.controller; //เปลี่ยนเป็นของตัวเอง
+/*package com.sa.group18.controller; //เปลี่ยนเป็นของตัวเอง
 import java.util.Collection;
 import com.sa.group18.entity.Nationality;//ชื่อentity
 import com.sa.group18.repository.NationalityRepository;//ชื่อ REpo
@@ -15,3 +15,4 @@ public class NationalityController{ //ตามชื่อไฟล์เลย
         return repo.findAll();
     }
 }
+*/
