@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
+import { ShowComponent } from './components/show/show.component';
 
 
 const appRoutes: Routes = [
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     RegisterComponent,
+    ShowComponent,
     
    
     

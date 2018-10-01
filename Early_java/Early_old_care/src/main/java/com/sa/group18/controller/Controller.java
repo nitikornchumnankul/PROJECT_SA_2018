@@ -1,5 +1,4 @@
 package com.sa.group18.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +21,8 @@ import com.sa.group18.repository.ProfileRepository;
 import com.sa.group18.repository.ReligionRepository;
 import com.sa.group18.repository.StatusRepository;
 import com.sa.group18.repository.TitlenameRepository;
-
-
-@RestController  
+@RestController
 @CrossOrigin(origins ="http://localhost:4200")
-
 public class Controller {
     @Autowired
     private EthnicityRepository ethnicityRepository;  
@@ -42,80 +38,83 @@ public class Controller {
     private StatusRepository statusRepository;
     @Autowired
     private TitlenameRepository titlenameRepository;
-
+//-------------------------Ethnicity---------------------------------------------------
 
     @GetMapping("/Ethnicity")
     public Collection<Ethnicity> getEthnicity(){
         return ethnicityRepository.findAll().stream().collect(Collectors.toList());
     }
-
-    @GetMapping("/Ethnicity/{Ethnicity_id}")
-    public Ethnicity getOneEthnicity(@PathVariable Long Ethnicity_id){
-        return ethnicityRepository.findById(Ethnicity_id).get();
+    @GetMapping("/Ethnicity/{Ethnicity_Id}")
+    public Ethnicity getOneEthnicity(@PathVariable Long Ethnicity_Id){
+        return ethnicityRepository.findById(Ethnicity_Id).get();
     }
+
+//-------------------------Nationality---------------------------------------------------
 
     @GetMapping("/Nationality")
     public Collection<Nationality> getNationality(){
         return nationalityRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Nationality/{Nationality_id}")
-    public Nationality getOneNationality(@PathVariable Long Nationality_id){
-        return nationalityRepository.findById(Nationality_id).get();
+    @GetMapping("/Nationality/{Nationality_Id}")
+    public Nationality getOneNationality(@PathVariable Long Nationality_Id){
+        return nationalityRepository.findById(Nationality_Id).get();
     }
+
+ //-------------------------Position------------------------------------------------------
 
     @GetMapping("/Position")
     public Collection<Position> getPosition(){
         return positionRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Position/{Position_id}")
-    public Position getOnePosition(@PathVariable Long Position_id){
-        return positionRepository.findById(Position_id).get();
+    @GetMapping("/Position/{Position_Id}")
+    public Position getOnePosition(@PathVariable Long Position_Id){
+        return positionRepository.findById(Position_Id).get();
     }
 
+//-------------------------Profile---------------------------------------------------------
 
     @GetMapping("/Profile")
     public Collection<Profile> getProfile(){
         return profileRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Profile/{Profile_id}")
-    public Profile getOneProfile(@PathVariable Long Profile_id){
-        return profileRepository.findById(Profile_id).get();
+    @GetMapping("/Profile/{Profile_Id}")
+    public Profile getOneProfile(@PathVariable Long Profile_Id){
+        return profileRepository.findById(Profile_Id).get();
     }
+
+//-------------------------Religion-------------------------------------------------------
 
     @GetMapping("/Religion")
     public Collection<Religion> getReligion(){
         return religionRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Religion/{Religion_id}")
-    public Religion getOneReligion(@PathVariable Long Religion_id){
-        return religionRepository.findById(Religion_id).get();
+    @GetMapping("/Religion/{Religion_Id}")
+    public Religion getOneReligion(@PathVariable Long Religion_Id){
+        return religionRepository.findById(Religion_Id).get();
     }
-
     
+//-------------------------Status----------------------------------------------------------
+
     @GetMapping("/Status")
     public List<Status> getStatus(){
         return statusRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Status/{Status_id}")
-    public Status getOneStatus(@PathVariable Long Status_id){
-        return statusRepository.findById(Status_id).get();
+    @GetMapping("/Status/{Status_Id}")
+    public Status getOneStatus(@PathVariable Long Status_Id){
+        return statusRepository.findById(Status_Id).get();
     }
+
+//------------------------Titlename----------------------------------------------------------
 
     @GetMapping("/Titlename")
     public List<Titlename> getTitlename(){
         return titlenameRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Titlename/{Titlename_id}")
-    public Titlename getOneTitlename(@PathVariable Long Titlename_id){
-        return titlenameRepository.findById(Titlename_id).get();
+    @GetMapping("/Titlename/{Titlename_Id}")
+    public Titlename getOneTitlename(@PathVariable Long Titlename_Id){
+        return titlenameRepository.findById(Titlename_Id).get();
     }
 
-
-
-
-
-
-
-
+//-------------------------------------------------------------------------------------------
 
 }

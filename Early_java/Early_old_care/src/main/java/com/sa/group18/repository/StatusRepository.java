@@ -1,3 +1,4 @@
+
 package com.sa.group18.repository;
 import com.sa.group18.entity.Status;//ชื่อ entity
 

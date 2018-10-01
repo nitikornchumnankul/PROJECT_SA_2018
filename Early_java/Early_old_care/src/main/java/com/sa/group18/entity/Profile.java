@@ -7,11 +7,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import javax.xml.crypto.Data;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
+import java.util.*;
 import lombok.*;
 @Entity
 @lombok.Data
@@ -27,7 +26,7 @@ public class Profile{
 
   
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Data    Brithday;
+    private Date    Brithday;
     @Column(length=13)
     private String Identification_number;
     @Column(length=6)
@@ -75,7 +74,7 @@ public class Profile{
 
     protected  Profile(){ }
     public  Profile( String name,                  String lastname,
-                    String sex,                   Data   Brithday,
+                    String sex,                   Date   Brithday,
                      String Identification_number, long   Sarary,
                      long   Height,                long   Weight,
                      String Congennitial_disease,  String Email,

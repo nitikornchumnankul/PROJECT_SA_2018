@@ -1,4 +1,4 @@
-package com.sa.group18.repository;
+package com.sa.group18;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
