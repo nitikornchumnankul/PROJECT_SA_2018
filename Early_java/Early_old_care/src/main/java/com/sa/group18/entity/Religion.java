@@ -20,20 +20,17 @@ import lombok.*;
 public class Religion{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="Religion_Id")
-    private @NonNull Long Religion_Id;
-    private @NonNull String Religion;
+    @Column(name="ReligionId")
+    private @NonNull Long religionId;
+    private @NonNull String religion;
     
-    @OneToMany(mappedBy="Religion",fetch= FetchType.LAZY)
-    @JsonManagedReference
-    private List<Profile> profiles =new ArrayList<>();
     
-    protected Religion() {}
+    public  Religion() {}
 
-    public  Religion(String Religion){
-        this.Religion=Religion;
+    public  Religion(String religion){
+        this.religion=religion;
     }
-    public Religion(long Religion_Id){
-        this.Religion_Id=Religion_Id;
+    public Religion(long religionId){
+        this.religionId=religionId;
     }
 }

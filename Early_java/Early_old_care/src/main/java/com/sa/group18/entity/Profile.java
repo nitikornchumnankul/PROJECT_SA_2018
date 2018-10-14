@@ -13,98 +13,92 @@ import javax.persistence.GenerationType;
 import java.util.*;
 import lombok.*;
 @Entity
-@lombok.Data
+@Data
 @Table(name="Profile")
 public class Profile{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private @NonNull Long   Profile_Id;
-    private @NonNull String First_Name;
-    private @NonNull String Last_Name;
-    private @NonNull String Sex;
+    private @NonNull Long   profileId;
+    private @NonNull String firstName;
+    private @NonNull String lastName;
+    private @NonNull String sex;
 
   
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date    Brithday;
+    private Date    brithday;
     @Column(length=13)
-    private String Identification_number;
+    private String identificationnumber;
     @Column(length=6)
-    private long   Sarary;
+    private long   sarary;
     @Column(length=3)
-    private long   Height;
+    private long   height;
     @Column(length=3)
-    private long   Weight;
-    private @NonNull String Congennitial_disease;
-    private @NonNull String Email;
+    private long   weight;
+    private @NonNull String congennitialdisease;
+    private @NonNull String email;
 
 
    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "Religion_Id")
-    @JsonBackReference
-    private Religion Religion;
+    @ManyToOne()
+    @JoinColumn(name= "religionId")
+    private Religion religion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "Position_Id")
-    @JsonBackReference
-    private Position Position;
+    @ManyToOne()
+    @JoinColumn(name= "positionId")
+    private Position position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "Titlename_Id")
-    @JsonBackReference
-    private Titlename Titlename;
+    @ManyToOne()
+    @JoinColumn(name= "titlenameId")
+    private Titlename titlename;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "Status_Id")
-    @JsonBackReference
-    private Status Status;
+    @ManyToOne()
+    @JoinColumn(name= "statusId")
+    private Status status;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "Nationality_Id")
-    @JsonBackReference
-    private Nationality Nationality;
+    @ManyToOne()
+    @JoinColumn(name= "nationalityId")
+    private Nationality nationality;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "Ethnicity_Id")
-    @JsonBackReference
-    private Ethnicity Ethnicity;
+    @ManyToOne()
+    @JoinColumn(name= "ethnicityId")
+    private Ethnicity ethnicity;
 
-    protected  Profile(){ }
-    public  Profile( String name,                  String lastname,
-                    String sex,                   Date   Brithday,
-                     String Identification_number, long   Sarary,
-                     long   Height,                long   Weight,
-                     String Congennitial_disease,  String Email,
-                     long   Religion_Id,           long   Position_Id,
-                     long   Titlename_Id,          long   Status_Id,
-                     long   Nationality_Id,        long   Ethnicity_Id){
+    public  Profile(){ }
+    public  Profile( String firstName,             String lastName,
+                     String sex,                   Date   brithday,
+                     String identificationnumber,  long   sarary,
+                     long   height,                long   weight,
+                     String congennitialdisease,   String email,
+                     long   religionId,            long   positionId,
+                     long   titlenameId,           long   statusId,
+                     long   nationalityId,         long   ethnicityId){
 
-        Religion    religion    = new Religion(Religion_Id);
-        Position    position    = new Position(Position_Id);
-        Titlename   titlename   = new Titlename(Titlename_Id);
-        Status      status      = new Status(Status_Id);
-        Nationality nationality = new Nationality(Nationality_Id);
-        Ethnicity   ethnicity   = new Ethnicity(Ethnicity_Id);
+        Religion    religion    = new Religion(religionId);
+        Position    position    = new Position(positionId);
+        Titlename   titlename   = new Titlename(titlenameId);
+        Status      status      = new Status(statusId);
+        Nationality nationality = new Nationality(nationalityId);
+        Ethnicity   ethnicity   = new Ethnicity(ethnicityId);
 
-        this.First_Name           = name;
-        this.Last_Name            = lastname;
-        this.Brithday             = Brithday;
-        this.Identification_number= Identification_number;
-        this.Sarary               = Sarary;
-        this.Height               = Height;
-        this.Weight               = Weight;
-        this.Congennitial_disease = Congennitial_disease;
-        this.Email                = Email;
+        this.firstName               = firstName;
+        this.lastName                = lastName;
+        this.brithday                = brithday;
+        this.identificationnumber    = identificationnumber;
+        this.sarary                  = sarary;
+        this.height                  = height;
+        this.weight                  = weight;
+        this.congennitialdisease     = congennitialdisease;
+        this.email                   = email;
 
-        this.Religion             = religion;
-        this.Position             = position;
-        this.Titlename            = titlename;
-        this.Status               = status;
-        this.Nationality          = nationality;
-        this.Ethnicity            = ethnicity;
+        this.religion                = religion;
+        this.position                = position;
+        this.titlename               = titlename;
+        this.status                  = status;
+        this.nationality             = nationality;
+        this.ethnicity               = ethnicity;
         
         
 

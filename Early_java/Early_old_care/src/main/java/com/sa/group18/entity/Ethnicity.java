@@ -18,19 +18,16 @@ import lombok.*;
 public class Ethnicity{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private @NonNull Long Ethnicity_Id;
-    private @NonNull String Ethnicity;
+    private @NonNull Long ethnicityId;
+    private @NonNull String ethnicity;
     
-    @OneToMany(mappedBy="Ethnicity",fetch= FetchType.LAZY)
-    @JsonManagedReference
-    private List<Profile> profiles =new ArrayList<>();
-    
-    protected Ethnicity(){}
-    public Ethnicity(String Ethnicity) {
-        this.Ethnicity=Ethnicity;
+
+    public  Ethnicity(){}
+    public Ethnicity(String ethnicity) {
+        this.ethnicity=ethnicity;
     }
-    public Ethnicity(long Ethnicity_Id){
-        this.Ethnicity_Id=Ethnicity_Id;
+    public Ethnicity(long ethnicityId){
+        this.ethnicityId=ethnicityId;
     }
 
 }

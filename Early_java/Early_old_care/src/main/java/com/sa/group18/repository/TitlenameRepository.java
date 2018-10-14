@@ -9,6 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 
     public interface TitlenameRepository extends JpaRepository<Titlename, Long> {
-
+    //Titlename findByTitleId(long titlenameId);
 }         
  

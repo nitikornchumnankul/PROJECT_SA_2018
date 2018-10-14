@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import lombok.*;
 
 @Entity
@@ -20,19 +21,14 @@ import lombok.*;
 public class Nationality {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="Nationality_Id")
-    private @NonNull Long Nationality_Id;
-    private @NonNull String Nationality;
+    private @NonNull Long nationalityId;
+    private @NonNull String nationality;
   
-    @OneToMany(mappedBy="Nationality",fetch= FetchType.LAZY)
-    @JsonManagedReference
-    private List<Profile> profiles = new ArrayList<>();
-
-    protected Nationality() {}
-    public Nationality(String Nationality){
-        this.Nationality=Nationality;
+    public  Nationality() {}
+    public Nationality(String nationality){
+        this.nationality=nationality;
     }
-    public Nationality(long Nationality_Id){
-        this.Nationality_Id=Nationality_Id;
+    public Nationality(long nationalityId){
+        this.nationalityId=nationalityId;
     }
 }

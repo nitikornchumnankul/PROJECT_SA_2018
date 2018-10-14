@@ -23,21 +23,18 @@ import lombok.*;
 public class Status{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="Status_Id")
-    private @NonNull Long Status_Id;
-    private @NonNull String Status;
+    @Column(name="StatusId")
+    private @NonNull Long statusId;
+    private @NonNull String status;
 
     
-    @OneToMany(mappedBy="Status",fetch= FetchType.LAZY)
-    @JsonManagedReference
-    private List<Profile> profiles =new ArrayList<>();
     
-    protected Status(){}
-    public  Status(String Status) {
-        this.Status=Status;
+    public  Status(){}
+    public  Status(String status) {
+        this.status=status;
     }
-    public Status(long Status_Id){
-        this.Status_Id=Status_Id;
+    public Status(long statusId){
+        this.statusId=statusId;
     }
 }
 

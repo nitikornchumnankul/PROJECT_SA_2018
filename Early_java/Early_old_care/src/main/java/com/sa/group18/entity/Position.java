@@ -21,19 +21,15 @@ import lombok.*;
 public class Position {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="Position_Id")
-    private @NonNull Long Position_Id;
-    private @NonNull String Position;
+    private @NonNull Long positionId;
+    private @NonNull String position;
 
-    @OneToMany(mappedBy="Position",fetch= FetchType.LAZY)
-    @JsonManagedReference
-    private List<Profile>  profiles =new ArrayList<>();
 
-    protected Position (){}
-    public Position(String Position){
-        this.Position=Position;
+    public Position (){}
+    public Position(String position){
+        this.position=position;
     }
-    public Position(long Position_Id){
-        this.Position_Id=Position_Id;
+    public Position(long positionId){
+        this.positionId=positionId;
     }
 }

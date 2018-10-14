@@ -29,6 +29,7 @@
 
 .name-full-width {
   width: 100%;
+  
 }
 .emty{
   margin-top: 2%;
@@ -37,20 +38,9 @@
 
   background-color: lightyellow
 }
-
-
-
-
-
-
 .mat-radio-button ~ .mat-radio-button {
   padding-right: 16px;
 }
-
-
-
-
-
 .Tab{
   margin-top: -100%;
   margin-left: 10%
@@ -61,20 +51,27 @@
 .Tab2{
   margin-left: 7.8%
 }
-
-
-/*
-.example-form1 {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-  margin-left: 50px;
-
-}
-.example-full-width1 {
-  width: 100%;
-}
-*/
 .buttom{
   background-attachment: fixed;
 }
+.mat-cart-background{
+  background-color:lightyellow;  
+}
+
+.placeholder {
+  
+  color:black;
+}
+.mat-card {
+    
+  max-width: 100%;
+  margin: auto auto;
+}
+.mat-radio-button{
+  color: #000;
+  
+}
+.background{
+  background-color:#AFEEEE;
+  padding: 0.7%;
+  }

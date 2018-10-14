@@ -1,0 +1,396 @@
+<head>
+    <style type="text/css">
+        .container {
+            padding: 1px;
+            background-color: aquamarine;
+            text-align: center;
+        }
+
+        #formtext {
+            margin-right: 6px;
+            margin: 20px 20px 20px 20%;
+            font-size: 20px;
+
+        }
+
+        #formtext2 {
+            margin-right: 6px;
+            margin: 20px 20px 20px 20px;
+            font-size: 20px;
+
+        }
+
+        .btn {
+            border: none;
+            /* Remove borders */
+            color: white;
+            /* Add a text color */
+            padding: 14px 28px;
+            /* Add some padding */
+            cursor: pointer;
+            /* Add a pointer cursor on mouse-over */
+            margin-left: 70%
+        }
+
+        .info {
+            background-color: #2196F3;
+        }
+
+        /* Blue */
+
+        .info:hover {
+            background: #0b7dda;
+        }
+
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+    <title>Page Title</title>
+</head>
+
+
+<div class="container">
+    <!--หัวข้อ-->
+    <h1>ศูนย์ดูแลผู้สูงอายุ</h1>
+    <p>ระบบจัดเก็บข้อมูลบุคลากรและเจ้าหน้าที่</p>
+</div>
+<div class="background">
+    <mat-chip-list>
+        <mat-chip routerLink="/register" routerLinkActive="active">กรอกข้อมูล</mat-chip>
+        <mat-chip routerLink="/show" routerLinkActive="active">ข้อมูล</mat-chip>
+        <mat-chip>ออกจากระบบ</mat-chip>
+    </mat-chip-list>
+</div>
+
+<div>
+
+    <form action="/action_page.phpstyle">
+        <fieldset>
+            <legend class="front">ประวัติส่วนตัว</legend>
+
+            <mat-card class="mat-cart-background">
+
+                <label>
+                    <font color="black">
+                        คำนำหน้าชื่อ:
+                    </font>
+                </label>
+                <mat-form-field class="Tab1">
+                    <mat-select [(ngModel)]="titlename" placeholder="คำนำหน้าชื่อ">
+                        <mat-option *ngFor="let TITLENAME of titlenames" [value]="TITLENAME.titlename">
+                            {{TITLENAME.titlename}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <form>
+                    <label>
+                        <font color="black">ชื่อ:</font>
+                    </label>
+                </form>
+                <form class="name-form">
+                    <mat-form-field class="name-full-width">
+                        <input matInput name="name" [(ngModel)]="fName" placeholder="ชื่อ">
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            นามสกุล:
+                        </font>
+                    </label>
+                </form>
+                <form class="name-form">
+                    <mat-form-field class="name-full-width">
+                        <input matInput name="name" [(ngModel)]="lName" placeholder="นามสกุล" value="">
+                    </mat-form-field>
+                </form>
+
+
+
+                <label>
+                    <font color="black">
+                        เพศ:
+                    </font>
+                </label>
+
+                <mat-radio-group class="Tab2">
+
+                    <mat-radio-button value="1">ชาย</mat-radio-button>
+                    <mat-radio-button value="2">หญิง</mat-radio-button>
+
+                </mat-radio-group>
+
+                <form class="emty"></form>
+
+
+
+                <form>
+                    <label>
+                        <font color="black">
+                            อายุ:
+                        </font>
+                    </label>
+                </form>
+                <form class="old-form">
+                    <mat-form-field class="old-width">
+                        <input matInput tyep="number" min="18" max="60" placeholder="อายุ" value="">
+                    </mat-form-field>
+                </form>
+
+
+                <form>
+                    <label>
+                        <font color="black">
+                            วันเกิด:
+                        </font>
+                    </label>
+                </form>
+                <form class="name-form">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            เลขที่บัตร:
+                        </font>
+                    </label>
+                </form>
+
+                <form class="name-form">
+                    <mat-form-field hintLabel="Max 13 characters" class="name-full-width">
+                        <input matInput #input maxlength="13" placeholder="เลขที่บัตรประจำตัวประชาชน" value="">
+                        <mat-hint align="end">{{input.value?.length || 0}}/13</mat-hint>
+                    </mat-form-field>
+
+                    <form class="emty"></form>
+
+                    <form>
+                            <label>
+                                <font color="black">
+                                สถานะ:
+                                </font>
+                            </label>
+                        </form>
+                        <form>
+                            <mat-form-field class="Tab">
+        
+                                 <mat-select [(ngModel)]="status" placeholder="สถานะ">
+                                    <mat-option *ngFor="let STATUS of statuss" [value]="STATUS.status">
+                                        {{STATUS.status}}
+                                    </mat-option>
+                                </mat-select>
+        
+                            </mat-form-field>
+                        </form>
+
+
+
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            สัญชาติ:
+                        </font>
+                    </label>
+                </form>
+                <form>
+                    <mat-form-field class="Tab">
+
+                        <mat-select [(ngModel)]="nationality" placeholder="สัญชาติ ">
+                            <mat-option *ngFor="let NATIONALITY of nationalities" [value]="NATIONALITY.nationality">
+                                {{NATIONALITY.nationality}}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                </form>
+                <form>
+                    <label>
+                        <font color="black">
+                            เชื้อชาติ:
+                        </font>
+                    </label>
+                </form>
+                <form>
+                    <mat-form-field class="Tab">
+
+                        <mat-select [(ngModel)]="ethnicity" placeholder="เชื้อชาติ">
+                            <mat-option *ngFor="let ETHNICITY of ethnicities" [value]="ETHNICITY.ethnicity">
+                                {{ETHNICITY.ethnicity}}
+                            </mat-option>
+                        </mat-select>
+
+
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            ศาสนา:
+                        </font>
+                    </label>
+                </form>
+                <form>
+                    <mat-form-field class="Tab">
+
+                        <mat-select [(ngModel)]="religion" placeholder="เชื้อชาติ">
+                            <mat-option *ngFor="let RELIGION of religions" [value]="RELIGION.religion">
+                                {{RELIGION.religion}}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            ตำแหน่ง:
+                        </font>
+                    </label>
+                </form>
+                <form>
+                    <mat-form-field class="Tab">
+
+                         <mat-select [(ngModel)]="position" placeholder="ตำแหน่ง">
+                            <mat-option *ngFor="let POSITION of positions" [value]="POSITION.position">
+                                {{POSITION.position}}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            เงินเดือน:
+                        </font>
+                    </label>
+                </form>
+                <form class="name-form">
+                    <mat-form-field class="name-full-width">
+                        <input matInput placeholder="เงินเดือน" value="">
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            น้ำหนัก:
+                        </font>
+                    </label>
+                </form>
+                <form class="old-form">
+                    <mat-form-field class="old-width">
+                        <input matInput type="number" min="0" max="200" placeholder="น้ำหนัก(กิโลกรัม)" value="">
+                    </mat-form-field>
+                </form>
+                <form>
+                    <label>
+                        <font color="black">
+                            ส่วนสูง:
+                        </font>
+                    </label>
+                </form>
+                <form class="old-form">
+                    <mat-form-field class="old-width">
+                        <input matInput type="number" min="0" max="250" placeholder="ส่วนสูง(เซนติเมตร)" value="">
+                    </mat-form-field>
+                </form>
+
+                <form>
+                    <label>
+                        <font color="black">
+                            โรคประจำตัว:
+                        </font>
+                    </label>
+                </form>
+                <form class="name-form">
+                    <mat-form-field class="name-full-width">
+                        <input matInput placeholder="โรคประจำตัว" value="">
+                    </mat-form-field>
+                </form>
+                <form>
+                    <label>
+                        <font color="black">
+                            เบอร์โทรศัพท์:
+                        </font>
+                    </label>
+                </form>
+                <form class="name-form">
+                    <mat-form-field class="name-full-width">
+                        <input matInput placeholder="เบอร์โทรศัพท์" value="">
+                    </mat-form-field>
+                </form>
+                <form>
+                    <label>
+                        <font color="black">
+                            อีเมล:
+                        </font>
+                    </label>
+                </form>
+                <form class="name-form">
+
+                    <mat-form-field class="name-full-width">
+                        <input matInput placeholder="อีเมล" value="">
+                    </mat-form-field>
+
+
+
+                </form>
+                <div>
+                    <button mat-button>บันทึก</button>
+                    <button (click)="onClear()" mat-button>ยกเลิก</button>
+                </div>
+
+            </mat-card>
+
+
+
+        </fieldset>
+    </form>
