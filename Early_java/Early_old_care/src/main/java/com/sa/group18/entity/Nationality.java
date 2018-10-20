@@ -22,13 +22,13 @@ public class Nationality {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private @NonNull Long nationalityId;
-    private @NonNull String nationality;
+    private String nationality;
   
     public  Nationality() {}
     public Nationality(String nationality){
         this.nationality=nationality;
     }
-    public Nationality(long nationalityId){
+    public Nationality(Long  nationalityId){
         this.nationalityId=nationalityId;
     }
 }

@@ -11,7 +11,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  getTitleName(): Observable<any> {
+  getTitlename(): Observable<any> {
     return this.http.get(this.API + '/Titlename');
   }
   
@@ -35,10 +35,10 @@ export class RegisterService {
     return this.http.get(this.API + '/Position');
   }
 
-  addNewUser(fName:string,lName:string){
-    return this.http.post(this.API + '/Profile/'+fName+'/'+lName,{
-      "firstName":fName,
-      "lastName":lName,
+  addNewUser(firstName:string,lastName:string){
+    return this.http.post(this.API + '/Profile/',{
+      "firstName":firstName,
+      "lastName":lastName,
     });
   }
 }

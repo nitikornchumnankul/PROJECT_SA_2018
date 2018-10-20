@@ -8,5 +8,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
     //ชื่อ repo
     public interface EthnicityRepository extends JpaRepository<Ethnicity, Long> {
-
+        Ethnicity findById(long ethnicityId);
+        Ethnicity findByEthnicity(String  Ethnicity);
 }

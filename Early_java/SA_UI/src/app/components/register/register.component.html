@@ -99,17 +99,19 @@
 
 <div>
 
-    <form action="/action_page.phpstyle">
+    <form action="/action_page.phpstyle" >
+
         <fieldset>
             <legend class="front">ประวัติส่วนตัว</legend>
 
-            <mat-card class="mat-cart-background">
+            <mat-card class="mat-cart-background"   >
 
                 <label>
                     <font color="black">
                         คำนำหน้าชื่อ:
                     </font>
                 </label>
+
                 <mat-form-field class="Tab1">
                     <mat-select [(ngModel)]="titlename" placeholder="คำนำหน้าชื่อ">
                         <mat-option *ngFor="let TITLENAME of titlenames" [value]="TITLENAME.titlename">
@@ -118,6 +120,8 @@
                     </mat-select>
                 </mat-form-field>
 
+
+
                 <form>
                     <label>
                         <font color="black">ชื่อ:</font>
@@ -125,7 +129,7 @@
                 </form>
                 <form class="name-form">
                     <mat-form-field class="name-full-width">
-                        <input matInput name="name" [(ngModel)]="fName" placeholder="ชื่อ">
+                        <input matInput [(ngModel)]="firstName" placeholder="ชื่อ" type="text">
                     </mat-form-field>
                 </form>
 
@@ -138,7 +142,7 @@
                 </form>
                 <form class="name-form">
                     <mat-form-field class="name-full-width">
-                        <input matInput name="name" [(ngModel)]="lName" placeholder="นามสกุล" value="">
+                        <input matInput [(ngModel)]="lastName" placeholder="นามสกุล">
                     </mat-form-field>
                 </form>
 
@@ -152,43 +156,20 @@
 
                 <mat-radio-group class="Tab2">
 
-                    <mat-radio-button value="1">ชาย</mat-radio-button>
-                    <mat-radio-button value="2">หญิง</mat-radio-button>
+                    <mat-radio-button [(ngModel)]="sex" value="ชาย">ชาย</mat-radio-button>
+                    <mat-radio-button [(ngModel)]="sex" value="หญิง">หญิง</mat-radio-button>
 
                 </mat-radio-group>
 
-                <form class="emty"></form>
+                <form class="emty">
 
-
-
-                <form>
-                    <label>
-                        <font color="black">
-                            อายุ:
-                        </font>
-                    </label>
                 </form>
-                <form class="old-form">
-                    <mat-form-field class="old-width">
-                        <input matInput tyep="number" min="18" max="60" placeholder="อายุ" value="">
-                    </mat-form-field>
+                <form class="emty">
+
                 </form>
 
 
-                <form>
-                    <label>
-                        <font color="black">
-                            วันเกิด:
-                        </font>
-                    </label>
-                </form>
-                <form class="name-form">
-                    <mat-form-field>
-                        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </form>
+
 
                 <form>
                     <label>
@@ -200,30 +181,31 @@
 
                 <form class="name-form">
                     <mat-form-field hintLabel="Max 13 characters" class="name-full-width">
-                        <input matInput #input maxlength="13" placeholder="เลขที่บัตรประจำตัวประชาชน" value="">
+                        <input matInput [(ngModel)]="identification" #input maxlength="13" placeholder="เลขที่บัตรประจำตัวประชาชน">
                         <mat-hint align="end">{{input.value?.length || 0}}/13</mat-hint>
                     </mat-form-field>
 
                     <form class="emty"></form>
 
-                    <form>
-                            <label>
-                                <font color="black">
+                    <form class="status">
+                        <label>
+                            <font color="black">
                                 สถานะ:
-                                </font>
-                            </label>
-                        </form>
-                        <form>
-                            <mat-form-field class="Tab">
-        
-                                 <mat-select [(ngModel)]="status" placeholder="สถานะ">
-                                    <mat-option *ngFor="let STATUS of statuss" [value]="STATUS.status">
-                                        {{STATUS.status}}
-                                    </mat-option>
-                                </mat-select>
-        
-                            </mat-form-field>
-                        </form>
+                            </font>
+                        </label>
+                    </form>
+
+                    <form>
+                        <mat-form-field class="Tab 3">
+
+                            <mat-select [(ngModel)]="status" placeholder="สถานะ">
+                                <mat-option *ngFor="let STATUS of statuss" [value]="STATUS.status">
+                                    {{STATUS.status}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </form>
 
 
 
@@ -278,7 +260,7 @@
                     <mat-form-field class="Tab">
 
                         <mat-select [(ngModel)]="religion" placeholder="เชื้อชาติ">
-                            <mat-option *ngFor="let RELIGION of religions" [value]="RELIGION.religion">
+                            <mat-option name="saveReligion" *ngFor="let RELIGION of religions" [value]="RELIGION.religion">
                                 {{RELIGION.religion}}
                             </mat-option>
                         </mat-select>
@@ -296,7 +278,7 @@
                 <form>
                     <mat-form-field class="Tab">
 
-                         <mat-select [(ngModel)]="position" placeholder="ตำแหน่ง">
+                        <mat-select [(ngModel)]="position" placeholder="ตำแหน่ง">
                             <mat-option *ngFor="let POSITION of positions" [value]="POSITION.position">
                                 {{POSITION.position}}
                             </mat-option>
@@ -305,56 +287,8 @@
                     </mat-form-field>
                 </form>
 
-                <form>
-                    <label>
-                        <font color="black">
-                            เงินเดือน:
-                        </font>
-                    </label>
-                </form>
-                <form class="name-form">
-                    <mat-form-field class="name-full-width">
-                        <input matInput placeholder="เงินเดือน" value="">
-                    </mat-form-field>
-                </form>
 
-                <form>
-                    <label>
-                        <font color="black">
-                            น้ำหนัก:
-                        </font>
-                    </label>
-                </form>
-                <form class="old-form">
-                    <mat-form-field class="old-width">
-                        <input matInput type="number" min="0" max="200" placeholder="น้ำหนัก(กิโลกรัม)" value="">
-                    </mat-form-field>
-                </form>
-                <form>
-                    <label>
-                        <font color="black">
-                            ส่วนสูง:
-                        </font>
-                    </label>
-                </form>
-                <form class="old-form">
-                    <mat-form-field class="old-width">
-                        <input matInput type="number" min="0" max="250" placeholder="ส่วนสูง(เซนติเมตร)" value="">
-                    </mat-form-field>
-                </form>
 
-                <form>
-                    <label>
-                        <font color="black">
-                            โรคประจำตัว:
-                        </font>
-                    </label>
-                </form>
-                <form class="name-form">
-                    <mat-form-field class="name-full-width">
-                        <input matInput placeholder="โรคประจำตัว" value="">
-                    </mat-form-field>
-                </form>
                 <form>
                     <label>
                         <font color="black">
@@ -364,7 +298,7 @@
                 </form>
                 <form class="name-form">
                     <mat-form-field class="name-full-width">
-                        <input matInput placeholder="เบอร์โทรศัพท์" value="">
+                        <input matInput [(ngModel)]="phone" #input maxlength="10" placeholder="เบอร์โทรศัพท์" type="tel">
                     </mat-form-field>
                 </form>
                 <form>
@@ -377,14 +311,14 @@
                 <form class="name-form">
 
                     <mat-form-field class="name-full-width">
-                        <input matInput placeholder="อีเมล" value="">
+                        <input matInput [(ngModel)]="email" placeholder="อีเมล" type="email">
                     </mat-form-field>
 
 
 
                 </form>
-                <div>
-                    <button mat-button>บันทึก</button>
+                <div >
+                    <button (click)="onSave()" mat-button>บันทึก</button>
                     <button (click)="onClear()" mat-button>ยกเลิก</button>
                 </div>
 

@@ -25,7 +25,7 @@ public class Status{
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="StatusId")
     private @NonNull Long statusId;
-    private @NonNull String status;
+    private String status;
 
     
     
@@ -33,7 +33,7 @@ public class Status{
     public  Status(String status) {
         this.status=status;
     }
-    public Status(long statusId){
+    public Status(Long  statusId){
         this.statusId=statusId;
     }
 }

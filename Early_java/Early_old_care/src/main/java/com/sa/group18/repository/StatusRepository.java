@@ -9,5 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
     //ชื่อ repo
     public interface StatusRepository extends JpaRepository<Status, Long> {
-
+         Status findById(long statusId);
+         Status findByStatus (String Status);
 }

@@ -22,7 +22,7 @@ public class Religion{
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="ReligionId")
     private @NonNull Long religionId;
-    private @NonNull String religion;
+    private String religion;
     
     
     public  Religion() {}
@@ -30,7 +30,7 @@ public class Religion{
     public  Religion(String religion){
         this.religion=religion;
     }
-    public Religion(long religionId){
+    public Religion(Long  religionId){
         this.religionId=religionId;
     }
 }

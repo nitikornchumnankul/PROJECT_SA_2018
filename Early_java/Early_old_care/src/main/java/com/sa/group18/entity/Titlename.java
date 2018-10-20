@@ -22,10 +22,8 @@ public class Titlename{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="TitlenameId")
-    private @NonNull Long titlenameId;
-
-    @Column
-    private @NonNull String titlename;
+    private @NonNull Long  titlenameId;
+    private String titlename;
 
 
     public Titlename() {}
@@ -33,7 +31,7 @@ public class Titlename{
     public Titlename(String titlename){
         this.titlename=titlename;
     }
-    public Titlename(long titlenameId){
+    public Titlename(Long  titlenameId){
         this.titlenameId=titlenameId;
     }
 }

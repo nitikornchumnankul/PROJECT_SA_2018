@@ -19,14 +19,14 @@ public class Ethnicity{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private @NonNull Long ethnicityId;
-    private @NonNull String ethnicity;
+    private String ethnicity;
     
 
     public  Ethnicity(){}
     public Ethnicity(String ethnicity) {
         this.ethnicity=ethnicity;
     }
-    public Ethnicity(long ethnicityId){
+    public Ethnicity(Long  ethnicityId){
         this.ethnicityId=ethnicityId;
     }
 

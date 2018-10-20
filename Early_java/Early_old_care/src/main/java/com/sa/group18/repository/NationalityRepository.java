@@ -9,5 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
     //ชื่อ repo
     public interface NationalityRepository extends JpaRepository<Nationality, Long> {
-
+         Nationality findById(long nationalityId);
+         Nationality findByNationality(String  Nationality);
 }

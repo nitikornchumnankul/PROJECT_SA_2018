@@ -33,7 +33,7 @@ public class EarlyOldCareApplication {
 	@Bean
     ApplicationRunner init(	TitlenameRepository  titlenameRepository, NationalityRepository nationalityRepository,
 							EthnicityRepository  ethnicityRepository, ReligionRepository    religionRepository,
-							StatusRepository     statusRepository,    PositionRepository positionRepository
+							StatusRepository     statusRepository,    PositionRepository    positionRepository
 							  ) {
 		return args -> {
 		Stream.of("นาย","นาง","นางสาว").forEach(name -> {
@@ -50,8 +50,6 @@ public class EarlyOldCareApplication {
 			});
 			statusRepository.findAll().forEach(System.out::println);
 
-
-
 		Stream.of("ไทย","กัมพูชา","ลาว").forEach(name -> {
 				Nationality nationality = new Nationality();
 			nationality.setNationality(name);
@@ -59,7 +57,6 @@ public class EarlyOldCareApplication {
 			});
 			nationalityRepository.findAll().forEach(System.out::println);
 
-		
 		Stream.of("ไทย","กัมพูชา","ลาว").forEach(name -> {
 				Ethnicity ethnicity = new Ethnicity();
 			ethnicity.setEthnicity(name);

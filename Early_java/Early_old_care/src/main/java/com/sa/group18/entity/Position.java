@@ -22,14 +22,14 @@ public class Position {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private @NonNull Long positionId;
-    private @NonNull String position;
+    private String position;
 
 
     public Position (){}
     public Position(String position){
         this.position=position;
     }
-    public Position(long positionId){
+    public Position(Long  positionId){
         this.positionId=positionId;
     }
 }

@@ -9,5 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 
     public interface ReligionRepository extends JpaRepository<Religion, Long> {
-
+         Religion findById(long religionId);
+         Religion findByReligion(String  Religion);
 }
