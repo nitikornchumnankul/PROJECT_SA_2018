@@ -7,77 +7,71 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  titlename=''; titlenames;
-  nationality='';  nationalities;
-  ethnicity='';  ethnicities;
-  religion=''; religions;
-  position=''; positions;
-  status=''; statuss;
 
-  firstname=''; 
-  lastname='';
-  sex='';
-  identification='';
-  phone='';
-  email='';
+  Titlename: Array<any>;
+  Status: Array<any>;
+  Religion: Array<any>;
+  Position: Array<any>;
+  Nationality: Array<any>;
+  Ethnicity: Array<any>;
+  Sex:Array<any>;
+  view: any={
+    firstname:'',
+    lastname:'',
+    sex: '',
+    identification:'',
+    phone:'',
+    email:'',
+    titlename:'',
+    nationality:'',
+    ethnicity:'',
+    religion:'',
+    position:'',
+    status:''
+  }
   
-
-
-  
-
-
-
-  constructor(private registerService: RegisterService, private httpClient: HttpClient) { }
+  constructor(private registerService: RegisterService, private httpClient: HttpClient ) { }
   ngOnInit() {
     this.registerService.getTitlename().subscribe(titlename => {
-      this.titlenames = titlename;
-      console.log(this.titlenames);
+      this.Titlename = titlename;
+      console.log(this.Titlename);
     });
 
     this.registerService.getNationality().subscribe(nationality => {
-      this.nationalities = nationality;
-      console.log(this.nationalities);
+      this.Nationality = nationality;
+      console.log(this.Nationality);
     });
 
     this.registerService.getEthnicity().subscribe(ethnicity => {
-      this.ethnicities = ethnicity;
-      console.log(this.ethnicities);
+      this.Ethnicity = ethnicity;
+      console.log(this.Ethnicity);
     });
 
     this.registerService.getReligion().subscribe(religion => {
-      this.religions = religion;
-      console.log(this.religions);
+      this.Religion = religion;
+      console.log(this.Religion);
     });
     this.registerService.getPosition().subscribe(position => {
-      this.positions = position;
-      console.log(this.positions);
+      this.Position = position;
+      console.log(this.Position);
     });
     this.registerService.getStatus().subscribe(status => {
-      this.statuss = status;
-      console.log(this.statuss);
+      this.Status = status;
+      console.log(this.Status);
     });
-    
+
+    this.registerService.getSex().subscribe(sex => {
+      this.Sex = sex;
+      console.log(this.Sex);
+    });
+
+
 
   }
   onSave(){
-    this.httpClient.post('http://localhost:8080/newProfile',{
-     
-      "firstName":this.firstname,
-      "lastName":this.lastname,
-      "sex":this.sex,
-      "identificationnumber":this.identification,
-      "email":this.email,
-      "phone":this.phone,
-      "religion":this.religion,
-      "position":this.position,
-      "titlename":this.titlename,
-      "status":this.status,
-      "nationality":this.nationality,
-      "ethnicity":this.ethnicity
-   
-     
-     
-    }).subscribe(data =>{
+    this.httpClient.get('http://localhost:8080/newProfile/'+ this.view.firstname + '/' + this.view.lastname + '/' + this.view.sex + '/' + this.view.identification + '/' + this.view.phone + '/' + this.view.email + '/' + this.view.titlename + '/' + this.view.nationality + '/' + this.view.ethnicity + '/' + this.view.religion + '/' + this.view.position + '/' + this.view.status,this.view)
+    .subscribe
+    (data =>{
       alert('บันทึกเรียบร้อย');
       console.log('Post Request is seccessful',data);
     },
@@ -87,10 +81,8 @@ export class RegisterComponent implements OnInit {
     }
     );
   }
-
-  
 }
 
-export class FormFieldOverviewExample {}
+
 
 

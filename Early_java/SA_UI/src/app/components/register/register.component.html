@@ -10,7 +10,6 @@
             margin-right: 6px;
             margin: 20px 20px 20px 20%;
             font-size: 20px;
-
         }
 
         #formtext2 {
@@ -91,8 +90,8 @@
 </div>
 <div class="background">
     <mat-chip-list>
-        <mat-chip routerLink="/register" routerLinkActive="active">กรอกข้อมูล</mat-chip>
-        <mat-chip routerLink="/show" routerLinkActive="active">ข้อมูล</mat-chip>
+        <mat-chip [routerLink]="['/register']" routerLinkActive="active">กรอกข้อมูล</mat-chip>
+        <mat-chip [routerLink]="['/show']" routerLinkActive="active">ข้อมูล</mat-chip>
         <mat-chip>ออกจากระบบ</mat-chip>
     </mat-chip-list>
 </div>
@@ -113,9 +112,9 @@
                 </label>
 
                 <mat-form-field class="Tab1">
-                    <mat-select [(ngModel)]="titlename" placeholder="คำนำหน้าชื่อ">
-                        <mat-option *ngFor="let TITLENAME of titlenames" [value]="TITLENAME.titlename">
-                            {{TITLENAME.titlename}}
+                    <mat-select [(ngModel)]="view.titlename" name="titlename" placeholder="คำนำหน้าชื่อ">
+                        <mat-option *ngFor="let titlename of Titlename" [value]="titlename.titlename">
+                            {{titlename.titlename}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -129,7 +128,7 @@
                 </form>
                 <form class="name-form">
                     <mat-form-field class="name-full-width">
-                        <input matInput [(ngModel)]="firstName" placeholder="ชื่อ" type="text">
+                        <input matInput placeholder="ชื่อ" name ="firstname" [(ngModel)]="view.firstname">
                     </mat-form-field>
                 </form>
 
@@ -142,7 +141,7 @@
                 </form>
                 <form class="name-form">
                     <mat-form-field class="name-full-width">
-                        <input matInput [(ngModel)]="lastName" placeholder="นามสกุล">
+                        <input matInput [(ngModel)]="view.lastname" name="lastname" placeholder="นามสกุล">
                     </mat-form-field>
                 </form>
 
@@ -154,12 +153,18 @@
                     </font>
                 </label>
 
-                <mat-radio-group class="Tab2">
+                <form>
+                    <mat-form-field class="Tab 3">
 
-                    <mat-radio-button [(ngModel)]="sex" value="ชาย">ชาย</mat-radio-button>
-                    <mat-radio-button [(ngModel)]="sex" value="หญิง">หญิง</mat-radio-button>
+                        <mat-select [(ngModel)]="view.sex" name="sex" placeholder="เพศ">
+                            <mat-option *ngFor="let sex of Sex" [value]="sex.sex">
+                                {{sex.sex}}
+                            </mat-option>
+                        </mat-select>
 
-                </mat-radio-group>
+                    </mat-form-field>
+                </form>
+
 
                 <form class="emty">
 
@@ -181,7 +186,7 @@
 
                 <form class="name-form">
                     <mat-form-field hintLabel="Max 13 characters" class="name-full-width">
-                        <input matInput [(ngModel)]="identification" #input maxlength="13" placeholder="เลขที่บัตรประจำตัวประชาชน">
+                        <input matInput [(ngModel)]="view.identification" #input maxlength="13" name="identification" placeholder="เลขที่บัตรประจำตัวประชาชน">
                         <mat-hint align="end">{{input.value?.length || 0}}/13</mat-hint>
                     </mat-form-field>
 
@@ -198,9 +203,9 @@
                     <form>
                         <mat-form-field class="Tab 3">
 
-                            <mat-select [(ngModel)]="status" placeholder="สถานะ">
-                                <mat-option *ngFor="let STATUS of statuss" [value]="STATUS.status">
-                                    {{STATUS.status}}
+                            <mat-select [(ngModel)]="view.status" name="status" placeholder="สถานะ">
+                                <mat-option *ngFor="let status of Status" [value]="status.status">
+                                    {{status.status}}
                                 </mat-option>
                             </mat-select>
 
@@ -221,9 +226,9 @@
                 <form>
                     <mat-form-field class="Tab">
 
-                        <mat-select [(ngModel)]="nationality" placeholder="สัญชาติ ">
-                            <mat-option *ngFor="let NATIONALITY of nationalities" [value]="NATIONALITY.nationality">
-                                {{NATIONALITY.nationality}}
+                        <mat-select [(ngModel)]="view.nationality" name="nationality" placeholder="สัญชาติ ">
+                            <mat-option *ngFor="let nationality of Nationality" [value]="nationality.nationality">
+                                {{nationality.nationality}}
                             </mat-option>
                         </mat-select>
 
@@ -239,9 +244,9 @@
                 <form>
                     <mat-form-field class="Tab">
 
-                        <mat-select [(ngModel)]="ethnicity" placeholder="เชื้อชาติ">
-                            <mat-option *ngFor="let ETHNICITY of ethnicities" [value]="ETHNICITY.ethnicity">
-                                {{ETHNICITY.ethnicity}}
+                        <mat-select [(ngModel)]="view.ethnicity" name="ethnicity" placeholder="เชื้อชาติ">
+                            <mat-option *ngFor="let ethnicity of Ethnicity" [value]="ethnicity.ethnicity">
+                                {{ethnicity.ethnicity}}
                             </mat-option>
                         </mat-select>
 
@@ -259,9 +264,9 @@
                 <form>
                     <mat-form-field class="Tab">
 
-                        <mat-select [(ngModel)]="religion" placeholder="เชื้อชาติ">
-                            <mat-option name="saveReligion" *ngFor="let RELIGION of religions" [value]="RELIGION.religion">
-                                {{RELIGION.religion}}
+                        <mat-select [(ngModel)]="view.religion" name="religion" placeholder="ศาสนา">
+                            <mat-option *ngFor="let religion of Religion" [value]="religion.religion">
+                                {{religion.religion}}
                             </mat-option>
                         </mat-select>
 
@@ -278,9 +283,9 @@
                 <form>
                     <mat-form-field class="Tab">
 
-                        <mat-select [(ngModel)]="position" placeholder="ตำแหน่ง">
-                            <mat-option *ngFor="let POSITION of positions" [value]="POSITION.position">
-                                {{POSITION.position}}
+                        <mat-select [(ngModel)]="view.position" name="position" placeholder="ตำแหน่ง">
+                            <mat-option *ngFor="let position of Position" [value]="position.position">
+                                {{position.position}}
                             </mat-option>
                         </mat-select>
 
@@ -298,7 +303,7 @@
                 </form>
                 <form class="name-form">
                     <mat-form-field class="name-full-width">
-                        <input matInput [(ngModel)]="phone" #input maxlength="10" placeholder="เบอร์โทรศัพท์" type="tel">
+                        <input matInput placeholder="เบอร์โทรศัพท์" name="phone" [(ngModel)]="view.phone" #input maxlength="10">
                     </mat-form-field>
                 </form>
                 <form>
@@ -311,7 +316,7 @@
                 <form class="name-form">
 
                     <mat-form-field class="name-full-width">
-                        <input matInput [(ngModel)]="email" placeholder="อีเมล" type="email">
+                        <input matInput [(ngModel)]="view.email" name="email" placeholder="อีเมล">
                     </mat-form-field>
 
 

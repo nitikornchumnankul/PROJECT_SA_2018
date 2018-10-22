@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.*;
 import lombok.*;
+
+@Getter
+@Setter
 @Entity
 @ToString
 @Data
@@ -22,8 +25,7 @@ public class Profile{
     private @NonNull Long   profileId;
 
     private  String firstName;
-    private  String lastName;
-    private  String sex;  
+    private  String lastName; 
     @Column(length=13)
     private String identificationnumber;
     private   String email;
@@ -33,6 +35,10 @@ public class Profile{
     @ManyToOne()
     @JoinColumn(name= "titlenameId")
     private Titlename titlename;
+
+    @ManyToOne()
+    @JoinColumn(name= "sexId")
+    private Sex sex ;
     
     @ManyToOne()
     @JoinColumn(name= "statusId")
@@ -54,5 +60,5 @@ public class Profile{
     @JoinColumn(name= "positionId")
     private Position position;
 
-    public  Profile(){ }   
+    public  Profile(){ }
 }

@@ -17,6 +17,7 @@ import com.sa.group18.entity.Nationality;
 import com.sa.group18.entity.Position;
 import com.sa.group18.entity.Profile;
 import com.sa.group18.entity.Religion;
+import com.sa.group18.entity.Sex;
 import com.sa.group18.entity.Status;
 import com.sa.group18.entity.Titlename;
 import com.sa.group18.repository.EthnicityRepository;
@@ -24,6 +25,7 @@ import com.sa.group18.repository.NationalityRepository;
 import com.sa.group18.repository.PositionRepository;
 import com.sa.group18.repository.ProfileRepository;
 import com.sa.group18.repository.ReligionRepository;
+import com.sa.group18.repository.SexRepository;
 import com.sa.group18.repository.StatusRepository;
 import com.sa.group18.repository.TitlenameRepository;
 
@@ -39,7 +41,7 @@ public class Controller {
     @Autowired private ReligionRepository    religionRepository;
     @Autowired private StatusRepository      statusRepository;
     @Autowired private TitlenameRepository   titlenameRepository;
- 
+    @Autowired private SexRepository         sexRepository;
 
 // //-------------------------Ethnicity---------------------------------------------------
 
@@ -119,40 +121,65 @@ public class Controller {
     public  Optional<Titlename> titlenameId(@PathVariable Long titlenameId){
         return titlenameRepository.findById(titlenameId);
     }
+//--------------------------Sex----------------------------------------------------------
+
+@GetMapping("/Sex")
+public Collection <Sex> sex(){
+    return sexRepository.findAll();
+}
+@GetMapping("/Sex/{sexId}")
+public  Optional<Sex> sexId(@PathVariable Long sexId){
+    return sexRepository.findById(sexId);
+}
  
 //--------------------------END------------------------------------------------------------
-    @PostMapping("/newProfile")
-    @ResponseBody
-    public Profile newProfile(Profile profile,@RequestBody() Map<String, Object> body){
-    Titlename    titlename      =  titlenameRepository.findByTitlename(body.get("titlename").toString());
-    Status       status         =  statusRepository.findByStatus(body.get("status").toString());
-    Nationality  nationality    =  nationalityRepository.findByNationality(body.get("nationality").toString());
-    Ethnicity    ethnicity      =  ethnicityRepository.findByEthnicity(body.get("ethnicity").toString());
-    Religion     religion       =  religionRepository.findByReligion(body.get("religion").toString());
-    Position     position       =  positionRepository.findByPosition(body.get("position").toString());
+    @GetMapping("/newProfile/{firstname}/{lastname}/{sex}/{identification}/{phone}/{email}/{titlename}/{nationality}/{ethnicity}/{religion}/{position}/{status}")
+    // @ResponseBody
+    // public Profile newProfile(Profile profile,@RequestBody() Map<String, Object> body)
+    public Profile profile(@PathVariable String firstname,@PathVariable String lastname,@PathVariable String sex,@PathVariable String identification,
+                            @PathVariable String phone,@PathVariable String email,@PathVariable String titlename,@PathVariable String nationality,
+                            @PathVariable String ethnicity,@PathVariable String religion,@PathVariable String position,@PathVariable String status){
+    // Titlename    titlename      =  titlenameRepository.findByTitlename(body.get("titlename").toString());
+    // Status       status         =  statusRepository.findByStatus(body.get("status").toString());
+    // Nationality  nationality    =  nationalityRepository.findByNationality(body.get("nationality").toString());
+    // Ethnicity    ethnicity      =  ethnicityRepository.findByEthnicity(body.get("ethnicity").toString());
+    // Religion     religion       =  religionRepository.findByReligion(body.get("religion").toString());
+    // Position     position       =  positionRepository.findByPosition(body.get("position").toString());
    
+    Profile profile = new Profile();
+    Ethnicity e = ethnicityRepository.findByEthnicity(ethnicity);
+    System.out.println(ethnicity);
+
+    Nationality n = nationalityRepository.findByNationality(nationality);
+    System.out.println(nationality);
+
+    Position p = positionRepository.findByPosition(position);
+    System.out.println(position);
+
+    Religion r = religionRepository.findByReligion(religion);
+    System.out.println(religion);
+
+    Status s = statusRepository.findByStatus(status);
+    System.out.println(status);
+
+    Titlename t = titlenameRepository.findByTitlename(titlename);
+    System.out.println(titlename);
+
+    Sex sx =sexRepository.findBySex(sex);
+
+    profile.setFirstName(firstname);
+    profile.setLastName(lastname);
+    profile.setIdentificationnumber(identification);
+    profile.setEmail(email);
+    profile.setPhone(phone);
+    profile.setTitlename(t);
+    profile.setStatus(s);
+    profile.setNationality(n);
+    profile.setEthnicity(e);
+    profile.setReligion(r);
+    profile.setPosition(p);
+    profile.setSex(sx);
    
-    profile.setFirstName(body.get("firstName").toString());
-    profile.setLastName(body.get("lastName").toString());
-    profile.setSex(body.get("sex").toString());
-    profile.setIdentificationnumber(body.get("identificationnumber").toString());
-    profile.setEmail(body.get("email").toString());
-    profile.setPhone(body.get("phone").toString());
-    profile.setTitlename(titlename);
-    profile.setStatus(status);
-    profile.setNationality(nationality);
-    profile.setEthnicity(ethnicity);
-    profile.setReligion(religion);
-    profile.setPosition(position);
-   
-    
-    
-   
-    
-   
-    
-    System.out.println(profile);
-    // System.out.println(titlename);
     return profileRepository.save(profile);
 }   
 }

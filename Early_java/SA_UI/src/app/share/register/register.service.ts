@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
+import { Profile } from 'src/app/components/show/show.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterService {
 
   public API = '//localhost:8080';
-
+  private serviceUrl = 'http://localhost:8080/Profile';
   constructor(private http: HttpClient) { }
 
   getTitlename(): Observable<any> {
@@ -35,10 +36,15 @@ export class RegisterService {
     return this.http.get(this.API + '/Position');
   }
 
-  addNewUser(firstName:string,lastName:string){
-    return this.http.post(this.API + '/Profile/',{
-      "firstName":firstName,
-      "lastName":lastName,
-    });
+  getSex():Observable<any> {
+    return this.http.get(this.API + '/Sex');
+  }
+
+  getnewProfile():Observable<any> {
+    return this.http.get(this.API + '/newProfile');
+  }
+
+  getShow():Observable<Profile[]>{
+    return this.http.get<Profile[]>(this.serviceUrl);
   }
 }

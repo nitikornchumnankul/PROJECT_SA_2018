@@ -6,6 +6,7 @@ import com.sa.group18.entity.Titlename;
 import com.sa.group18.entity.Nationality;
 import com.sa.group18.entity.Ethnicity;
 import com.sa.group18.entity.Religion;
+import com.sa.group18.entity.Sex;
 import com.sa.group18.entity.Status;
 import com.sa.group18.entity.Position;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,7 @@ import com.sa.group18.repository.TitlenameRepository;
 import com.sa.group18.repository.NationalityRepository;
 import com.sa.group18.repository.EthnicityRepository;
 import com.sa.group18.repository.ReligionRepository;
+import com.sa.group18.repository.SexRepository;
 import com.sa.group18.repository.StatusRepository;
 import com.sa.group18.repository.PositionRepository;
 @SpringBootApplication
@@ -33,8 +35,8 @@ public class EarlyOldCareApplication {
 	@Bean
     ApplicationRunner init(	TitlenameRepository  titlenameRepository, NationalityRepository nationalityRepository,
 							EthnicityRepository  ethnicityRepository, ReligionRepository    religionRepository,
-							StatusRepository     statusRepository,    PositionRepository    positionRepository
-							  ) {
+							StatusRepository     statusRepository,    PositionRepository    positionRepository,
+							SexRepository    	 sexRepository  ) {
 		return args -> {
 		Stream.of("นาย","นาง","นางสาว").forEach(name -> {
 				Titlename titlename = new Titlename();
@@ -78,7 +80,12 @@ public class EarlyOldCareApplication {
 			});
 			positionRepository.findAll().forEach(System.out::println);
 		
-		
+			Stream.of("ชาย","หญิง").forEach(name -> {
+				Sex sex = new Sex();
+				sex.setSex(name);
+			sexRepository.save(sex);
+			});
+			sexRepository.findAll().forEach(System.out::println);
 			
 		
 		};
