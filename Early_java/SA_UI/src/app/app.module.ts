@@ -15,6 +15,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
+
 import {MatChipsModule} from '@angular/material/chips';
 
 const appRoutes: Routes = [
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     MatButtonToggleModule,
     MatTableModule,
     MatChipsModule,
+   
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

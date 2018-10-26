@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { RegisterService } from './../../share/register/register.service';
 import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
 
+export class RegisterComponent implements OnInit {
   Titlename: Array<any>;
   Status: Array<any>;
   Religion: Array<any>;
@@ -65,19 +66,21 @@ export class RegisterComponent implements OnInit {
       console.log(this.Sex);
     });
 
-
+   
+  
 
   }
   onSave(){
     this.httpClient.get('http://localhost:8080/newProfile/'+ this.view.firstname + '/' + this.view.lastname + '/' + this.view.sex + '/' + this.view.identification + '/' + this.view.phone + '/' + this.view.email + '/' + this.view.titlename + '/' + this.view.nationality + '/' + this.view.ethnicity + '/' + this.view.religion + '/' + this.view.position + '/' + this.view.status,this.view)
     .subscribe
-    (data =>{
+    (
+      data =>{
       alert('บันทึกเรียบร้อย');
       console.log('Post Request is seccessful',data);
     },
     error=>{
       console.log('Rrror',error);
-      alert('ไม่สามารถบันทึกได้');
+      alert('ไม่สามารถบันทึกได้ โปรดกรุณาใส่ข้อมูลให้ครบถ้วน');
     }
     );
   }
